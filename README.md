@@ -94,7 +94,7 @@ Create an External Client App and Named Credential using these steps:
     3. Set the following values:
         1. Label: ConnectAPI
         2. Name: ConnectAPI
-            1. Note you can select a different Name for the Named Credential.  If you do then you will need to update the CallExplainerService action of the Get Last Explainer Messages to match the name you select
+            1. Note you can select a different Name for the Named Credential.  If you do change the name then you will have to update the OSAgentFlowInvokerWorkaround to use a different Named Credential
         3. URL: Your Domain Name followed by my.salesforce.com
             1. Ex:  https://storm-2174aa3fc55207.my.salesforce.com
                 1. Note:  There may be issues if your domain name has .demo. in it.  If that’s the case then try adding .demo. before my.salesforce.com
