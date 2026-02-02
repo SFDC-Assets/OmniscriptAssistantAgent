@@ -49,26 +49,27 @@ This project includes Lightning Web Components that override the standard Step C
 ## Current Workaround for Experience Cloud users to use Invocable Agent Actions
 As noted in this [Help Article](https://help.salesforce.com/s/articleView?id=ai.agent_custom_invocable_action_flow_apex.htm&type=5), Experience Cloud users cannot directly invoke Invocable Agent Actions.  At some point this is exptected to be supported.  In the meantime this component includes a workaround to call the Flow through a Web Service.  Calling the Web Service requires some additional setup steps found below.  If for whatever reason this component does not need to work with Experience Cloud users then you do not need to perform the following steps.  If you do this then you will need to uncomment this line in the LWC js file:  import invokeFlow from '@salesforce/apex/OSAgentFlowInvoker.invokeFlow'; and comment out this one:  import invokeFlow from '@salesforce/apex/OSAgentFlowInvokerWorkaround.invokeFlow';
 
-Create a Connected App and Named Credential using these steps:
-1. Create a Connected App
-    1. Go to Setup → External Client Apps → Settings
-    2. Ensure that the Allow creation of connected toggle is enabled and Click the New Connected App button
+Create an External Client App and Named Credential using these steps:
+1. Create an External Client App
+    1. Go to Setup → External Client Apps → External Client App Manager
+    2. Click the New External Client App button
     3. Set the following values:
         1. Name: ConnectAPI
         2. API Name: ConnectAPI
         3. Contact Email: Your email address
         4. Click the Enable OAuth Settings checkbox
         5. Callback URL:  https://login.salesforce.com (Note we will come back and change this value)
-        6. Auth Scopes
+        6. OAuth Scopes
             1. Select 
                 1. Full access (full) 
                 2. Perform requests at any time (refresh token, offline access)
         7. Click the Enable Client Credentials Flow
             1. Click Ok on the popup window
-        8. Click Save and then click Continue
-        9. Click the Manage Consumer Detail button
+        8. Keep the default values checked
+        9. Click Save
+        10. On the Settings tab, under OAuth Settings, Click the Consumer Key and Secret button
             1. Verify your identity through you email if required
-            2. Keep the screen with the Consumer Key and Consumer Secret open
+            2. Keep the tab with the Consumer Key and Consumer Secret open
 2. Create an Auth Provider
     1. Go to Setup → Auth. Providers
     2. Click the New button
@@ -76,18 +77,17 @@ Create a Connected App and Named Credential using these steps:
     4. Enter the following values:
         1. Name: ConnectAPI
         2. URL Suffix: ConnectAPI
-        3. Consumer Key: Paste from Step ib above
-        4. Consumer Secret:  Paste from Step ib above
+        3. Consumer Key: Paste from the tab above
+        4. Consumer Secret:  Paste from the tab above
         5. Default Scopes: refresh_token full
         6. Click Save
         7. At the bottom of the screen find the Callback URL value and copy this value
-3. Update the Connected App
-    1. Go to Setup → App Manager
-    2. Find the ConnectAPI Connected app and click the View button on the right hand side of the list
-    3. Click the Edit button
-    4. Paste in the value from Step 2dvii above into the Callback URL field
-    5. Click the Save button and then click the Continue button
-4. Wait for 10 minutes to make sure that the Connected App has been updated
+3. Update the External Client App
+    1. Go to Setup → External Client Apps -> External Client App Manager
+    2. Find the External Client App and click the Edit Settings option from the dropdown
+    3. Under OAuth Settings, find the Callback URL and paste in the value from Step 2dvii above into the Callback URL field
+    4. Click the Save button 
+4. Wait for 10 minutes to make sure that the External Client App has been updated
 5. Create the Named Credential
     1. Go to Setup → Named Credential
     2. Click the dropdown on the New button and select New Legacy
