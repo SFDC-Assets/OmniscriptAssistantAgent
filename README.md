@@ -30,7 +30,7 @@ This project includes Lightning Web Components that override the standard Step C
     - classes
     - omniDataTransforms
     - genAIPromptTemplates
-    - genAIFunctions
+    - genAiFunctions
     - genAiPlugins
     - genAIPlannerBundles
     - bots
@@ -39,7 +39,7 @@ This project includes Lightning Web Components that override the standard Step C
     - lwc
     - permissionsets
 
-    - You can also use the following command line in terminal replacing: ALIASORLOGIN with your Org's Alias or login:  sf project deploy start --source-dir force-app/main/default/classes force-app/main/default/genAiPlugins force-app/main/default/genAiPlannerBundles force-app/main/default/bots force-app/main/default/omniScripts force-app/main/default/lightningTypes force-app/main/default/lwc force-app/main/default/permissionsets  --target-org ALIASORLOGIN
+    - You can also use the following command line in terminal replacing: ALIASORLOGIN with your Org's Alias or login:  sf project deploy start --source-dir force-app/main/default/classes force-app/main/default/omniDataTransforms force-app/main/default/genAIPromptTemplates force-app/main/default/genAiFunctions force-app/main/default/genAiPlugins force-app/main/default/genAiPlannerBundles force-app/main/default/bots force-app/main/default/omniScripts force-app/main/default/lightningTypes force-app/main/default/lwc force-app/main/default/permissionsets  --target-org ALIASORLOGIN
 - In the Org assign an Einstein User to the Omniscript_Assistant Agent and activate the Agent.  
 - Deploy the Omniscript_Step_Chart_Agent Flow 
 - You can also use the following command line in terminal replacing: ALIASORLOGIN with your Org's Alias or login:  sf project deploy start --source-dir force-app/main/default/flows --target-org ALIASORLOGIN
