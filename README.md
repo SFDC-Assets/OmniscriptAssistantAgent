@@ -105,7 +105,7 @@ Create an External Client App and Named Credential using these steps:
         8. Click Allow Merge Fields in HTTP Header
         9. Click Allow Merge Fields in HTTP Body
     4. Click the Save button
-        1. Note if you receive an error message here, wait a few minutes and delete the Named Credential and try again.  Connected Apps can take up to 10 minutes to create
+        1. Note if you receive an error message here, wait a few minutes and delete the Named Credential and try again.  External Client Apps can take up to 10 minutes to create
     5. Enter your credentials to the Org
     6. Click the Allow button
     7. Click the Confirm button
