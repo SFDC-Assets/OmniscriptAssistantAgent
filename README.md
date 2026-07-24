@@ -110,6 +110,9 @@ Create an External Client App and Named Credential using these steps:
     6. Click the Allow button
     7. Click the Confirm button
 
+### Security note on the Named Credential
+The user linked to the Named Credential should be a dedicated, least-privilege user. Do not use a System Administrator. Grant only the `OSStepChartAgentPermissions` permission set plus the baseline Omnistudio license the Prerequisites section already requires.
+
 ## How to add to other Omniscripts
 - Open an Omniscript and ensure that the Step Chart is enabled.  
 - Go to the Setup tab in the Omniscript.  Find the Element Type to LWC Mapping section.  Add a new entry and set ElementType to StepChart and Lightning Web Component to osStepChartAgent or osStepChartAgentWithSteps
