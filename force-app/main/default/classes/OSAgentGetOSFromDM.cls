@@ -1,20 +1,22 @@
-public class OSAgentGetOSFromDM {
+public with sharing class OSAgentGetOSFromDM {
     @InvocableMethod
     public static List<Response> getPrompt(List<Request> requests) {
         Request input = requests[0];
-        
+
+        OSAgentAuthz.assertAccessibleOmniProcess(input.OSId);
+
         List<Response> responses = new List<Response>();
         Response output = new Response();
         responses.add(output);
-   
-       
-        
+
+
+
         /* Specify Data Mapper extract or transform to call */
-        String bundleName = 'OSAgentGetOSDetails'; 
-        
+        String bundleName = 'OSAgentGetOSDetails';
+
         /* Populate the input JSON */
-        Map<String, Object> objectList = new Map<String, Object>{'OSId'=>input.OSId}; 
-        
+        Map<String, Object> objectList = new Map<String, Object>{'OSId'=>input.OSId};
+
         /* Call the Data Mapper */
         String jsonString = JSON.serialize(objectList);
         List<String> jsonInputData = new List<String>();
@@ -27,7 +29,7 @@ public class OSAgentGetOSFromDM {
         options.shouldSendLegacyResponse = true;
         apexInput.options = options;
         ConnectApi.DataMapperExecuteOutputRepresentation DMoutput = ConnectApi.OmniDesignerConnect.executeDataMapper(bundleName, apexInput);
-        
+
         /* Process the results returned by a Data Mapper Extract or Transform */
         List<String> innerResponse = DMoutput.response;
         for (String currentResponse : innerResponse){
@@ -35,10 +37,10 @@ public class OSAgentGetOSFromDM {
             List<String> keys = new List<String>(outerMap.keySet());
             output.Prompt = JSON.serialize(outerMap.get('response'));
         }
-       
+
         return responses;
     }
- 
+
     // Type and API Name of all variables must match the template
     public class Request {
         @InvocableVariable(required=true)
