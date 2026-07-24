@@ -1,5 +1,8 @@
 public with sharing class OSAgentFlowInvokerWorkaround {
-        public class FlowResponse {
+
+    @TestVisible private static final String PACKAGED_FLOW_API_NAME = 'Omniscript_Step_Chart_Agent';
+
+    public class FlowResponse {
         @AuraEnabled public String sessionId;
         @AuraEnabled public String response;
 
@@ -10,12 +13,16 @@ public with sharing class OSAgentFlowInvokerWorkaround {
     }
     @AuraEnabled(cacheable=false)
    public static FlowResponse invokeFlow(String recordId, String sessionId, String requestText, String sessionHistoryJSON, String osJSON, String flowApiName) {
-        String apiNameToInvoke = String.isBlank(flowApiName)
-            ? 'Omniscript_Step_Chart_Agent'
-            : flowApiName;
-    
+        String apiNameToInvoke = String.isBlank(flowApiName) ? PACKAGED_FLOW_API_NAME : flowApiName;
+        if (apiNameToInvoke != PACKAGED_FLOW_API_NAME) {
+            throw new AuraHandledException('Unsupported flow.');
+        }
+
+        OmniProcess authorized = OSAgentAuthz.resolveAuthorizedOmniProcess(osJSON);
+
         HttpRequest req = new HttpRequest();
-        req.setEndpoint('callout:ConnectAPI/services/data/v64.0/actions/custom/flow/' + apiNameToInvoke);
+        // Path segment is a compile-time constant enforced above; not caller-controlled at this point.
+        req.setEndpoint('callout:ConnectAPI/services/data/v64.0/actions/custom/flow/' + EncodingUtil.urlEncode(apiNameToInvoke, 'UTF-8'));
         req.setMethod('POST');
         req.setHeader('Content-Type', 'application/json');
         req.setTimeout(30000);
@@ -27,6 +34,7 @@ public with sharing class OSAgentFlowInvokerWorkaround {
         inputMap.put('Session_Id', sessionId);
         inputMap.put('Request', requestText);
         inputMap.put('OmniscriptJSON', osJSON);
+        inputMap.put('OmniscriptName', authorized == null ? '' : authorized.Name);
         inputsList.add(inputMap);
         payloadMap.put('inputs', inputsList);
         // Convert the Map to JSON string

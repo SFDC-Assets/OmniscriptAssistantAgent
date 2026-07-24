@@ -4,7 +4,7 @@
     <assignmentRulesUsed>false</assignmentRulesUsed>
     <deletedOnSuccess>false</deletedOnSuccess>
     <errorIgnored>false</errorIgnored>
-    <fieldLevelSecurityEnabled>false</fieldLevelSecurityEnabled>
+    <fieldLevelSecurityEnabled>true</fieldLevelSecurityEnabled>
     <inputType>JSON</inputType>
     <isManagedUsingStdDesigner>false</isManagedUsingStdDesigner>
     <name>OSAgentGetOSDetails</name>
