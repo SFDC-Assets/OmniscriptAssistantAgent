@@ -1,0 +1,10 @@
+import { logUsageInteractionEvent } from 'c/omniscriptRestApi';
+
+/**
+ * @description Performs logging for OmniStudio Usage Monitoring
+ * @param {String} omniscriptName
+ * @param {String} omniscriptId
+ */
+export function logOmniscriptUsageEvent(omniscriptName, omniscriptId) {
+    logUsageInteractionEvent({ componentType: 'OmniScript', componentName: omniscriptName, componentId: omniscriptId });
+}
