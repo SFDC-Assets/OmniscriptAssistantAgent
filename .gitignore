@@ -1,0 +1,45 @@
+# OmniStudio base LWC components — sourced from @omnistudio/omniscript_customization npm package.
+# These are proprietary Salesforce/Vlocity files and must not be redistributed publicly.
+# Run scripts/install-omnistudio-components.sh to install them before deploying.
+force-app/main/default/lwc/asyncUtils/
+force-app/main/default/lwc/buffer/
+force-app/main/default/lwc/dayjs/
+force-app/main/default/lwc/expressionEngine/
+force-app/main/default/lwc/lodash/
+force-app/main/default/lwc/navigationUtils/
+force-app/main/default/lwc/nearley/
+force-app/main/default/lwc/newportLoader/
+force-app/main/default/lwc/oaUtils/
+force-app/main/default/lwc/oaVtag/
+force-app/main/default/lwc/omniscriptActionUtils/
+force-app/main/default/lwc/omniscriptBaseMixin/
+force-app/main/default/lwc/omniscriptFormattedRichText/
+force-app/main/default/lwc/omniscriptInternalUtils/
+force-app/main/default/lwc/omniscriptRestApi/
+force-app/main/default/lwc/omniscriptRestApiUtilsForCore/
+force-app/main/default/lwc/omniscriptStepChart/
+force-app/main/default/lwc/omniscriptStepChartItems/
+force-app/main/default/lwc/omniscriptTrackingServiceUtils/
+force-app/main/default/lwc/omniscriptUtils/
+force-app/main/default/lwc/pubsub/
+force-app/main/default/lwc/salesforceUtils/
+
+# OmniStudio labels and message channels — also from the npm package
+force-app/main/default/labels/
+force-app/main/default/messageChannels/
+
+# Local Salesforce tooling
+.sf/
+.sfdx/
+.vscode/
+.DS_Store
+force-app/.DS_Store
+force-app/main/.DS_Store
+force-app/main/default/.DS_Store
+force-app/main/default/lwc/.DS_Store
+force-app/main/default/genAiPlannerBundles/.DS_Store
+
+# npm artifacts
+node_modules/
+package-lock.json
+.npmrc

@@ -19,27 +19,50 @@ This project includes Lightning Web Components that override the standard Step C
 
 ## Prerequisites for the Org
 - Agentforce must be enabled in the Org
-- Licenses for Omnistudio must in the Org
+- Licenses for Omnistudio must be in the Org
     - The Agent User and the user associated with the Named Credential will need an Omnistudio License.
 - Omnistudio Metadata must be enabled
-- The Omnistudio Managed Package must be enabled in the Org.  Note this is needed even if the Standard runtime and Standard Designers are used.
+- This project works with both **Standard OmniStudio** (platform-native, no managed package) and **OmniStudio Managed Package** orgs.
+
+## First-time Setup — Install OmniStudio Base Components
+
+The base OmniStudio LWC components are not included in this repository for licensing reasons. They are sourced from a private npm package provided by Salesforce and must be installed locally before you can deploy.  
+
+**What you need:**
+- An NPM access key from Salesforce Customer Support (request via a support case referencing `@omnistudio/omniscript_customization`) See https://help.salesforce.com/s/articleView?id=xcloud.os_standard_set_up_your_environment_for_customizing_omniscript_elements.htm&type=5 for more details
+- Node.js and npm installed
+
+**Run the setup script:**
+```bash
+bash scripts/install-omnistudio-components.sh
+```
+
+The script will prompt for your access key, download the package from the Salesforce/Vlocity npm registry, and copy only the 22 required base components (plus labels and message channels) into the project. This is a one-time step per machine — after that, deploy as normal.
 
 ## Steps to install this in an Org
-- Ensure that all prerequisites are in place
-- Deploy the components in the following order
-    - classes
-    - omniDataTransforms
-    - genAIPromptTemplates
-    - genAiFunctions
-    - genAiPlugins
-    - genAIPlannerBundles
-    - bots
-    - omniScripts
-    - lightningTypes
-    - lwc
-    - permissionsets
+- Ensure that all prerequisites are in place and the setup script above has been run
+- Deploy in the following order (labels and message channels must come before LWCs):
+    1. labels
+    2. messageChannels
+    3. classes
+    4. omniDataTransforms
+    5. genAIPromptTemplates
+    6. genAiFunctions
+    7. genAiPlugins
+    8. genAIPlannerBundles
+    9. bots
+    10. omniScripts
+    11. lightningTypes
+    12. lwc
+    13. permissionsets
 
-    - You can also use the following command line in terminal replacing: ALIASORLOGIN with your Org's Alias or login:  sf project deploy start --source-dir force-app/main/default/classes force-app/main/default/omniDataTransforms force-app/main/default/genAIPromptTemplates force-app/main/default/genAiFunctions force-app/main/default/genAiPlugins force-app/main/default/genAiPlannerBundles force-app/main/default/bots force-app/main/default/omniScripts force-app/main/default/lightningTypes force-app/main/default/lwc force-app/main/default/permissionsets  --target-org ALIASORLOGIN
+- You can also use the following command line in terminal replacing ALIASORLOGIN with your Org's Alias or login:
+
+```bash
+sf project deploy start \
+  --source-dir force-app/main/default/labels force-app/main/default/messageChannels force-app/main/default/classes force-app/main/default/omniDataTransforms force-app/main/default/genAIPromptTemplates force-app/main/default/genAiFunctions force-app/main/default/genAiPlugins force-app/main/default/genAiPlannerBundles force-app/main/default/bots force-app/main/default/omniScripts force-app/main/default/lightningTypes force-app/main/default/lwc force-app/main/default/permissionsets \
+  --target-org ALIASORLOGIN
+```
 - In the Org assign an Einstein User to the Omniscript_Assistant Agent and activate the Agent.  
 - Deploy the Omniscript_Step_Chart_Agent Flow 
 - You can also use the following command line in terminal replacing: ALIASORLOGIN with your Org's Alias or login:  sf project deploy start --source-dir force-app/main/default/flows --target-org ALIASORLOGIN

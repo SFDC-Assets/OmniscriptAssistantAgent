@@ -10,13 +10,13 @@
                       for:item="step"
                       for:index="index">
               <template if:true={step.isStep}>
-                <omnistudio-omniscript-step-chart-items key={step.name}
+                <c-omniscript-step-chart-items key={step.name}
                                                json-def={step}
                                                is-vertical={isVertical}
                                                json-data={jsonDef.response}
                                                current-index={currentIndex}
                                                script-header-def={scriptHeaderDef}>
-              </omnistudio-omniscript-step-chart-items>
+              </c-omniscript-step-chart-items>
               </template>
             </template>
           </ol>
@@ -58,9 +58,9 @@
             >
             </lightning-button-icon-stateful>
         </div>
-      <omnistudio-omniscript-formatted-rich-text class="slds-text-longform slds-path__guidance-content"
+      <c-omniscript-formatted-rich-text class="slds-text-longform slds-path__guidance-content"
                                         value={stepInstruction}>
-  </omnistudio-omniscript-formatted-rich-text>
+  </c-omniscript-formatted-rich-text>
 
       <div class="slds-progress slds-progress_vertical slds-p-vertical_medium">
         <ol class="slds-progress__list">
@@ -68,7 +68,7 @@
                     for:item="step"
                     for:index="index">
             <template if:true={step.isStep}>
-              <omnistudio-omniscript-step-chart-items key={step.name}
+              <c-omniscript-step-chart-items key={step.name}
                                              json-def={step}
                                              is-vertical={isVertical}
                                              json-data={jsonDef.response}
@@ -78,7 +78,7 @@
                                              first-visible-step-index={firstVisibleStepIndex}
                                              current-index={currentIndex}
                                              script-header-def={scriptHeaderDef}>
-              </omnistudio-omniscript-step-chart-items>
+              </c-omniscript-step-chart-items>
             </template>
           </template>
         </ol>
