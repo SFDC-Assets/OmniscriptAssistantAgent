@@ -60,15 +60,7 @@ The script will prompt for your access key, download the package from the Salesf
 
 ```bash
 sf project deploy start \
-  --source-dir force-app/main/default/labels \
-  --target-org ALIASORLOGIN
-
-sf project deploy start \
-  --source-dir force-app/main/default/messageChannels \
-  --target-org ALIASORLOGIN
-
-sf project deploy start \
-  --source-dir force-app/main/default/classes force-app/main/default/omniDataTransforms force-app/main/default/genAIPromptTemplates force-app/main/default/genAiFunctions force-app/main/default/genAiPlugins force-app/main/default/genAiPlannerBundles force-app/main/default/bots force-app/main/default/omniScripts force-app/main/default/lightningTypes force-app/main/default/lwc force-app/main/default/permissionsets \
+  --source-dir force-app/main/default/labels force-app/main/default/messageChannels force-app/main/default/classes force-app/main/default/omniDataTransforms force-app/main/default/genAIPromptTemplates force-app/main/default/genAiFunctions force-app/main/default/genAiPlugins force-app/main/default/genAiPlannerBundles force-app/main/default/bots force-app/main/default/omniScripts force-app/main/default/lightningTypes force-app/main/default/lwc force-app/main/default/permissionsets \
   --target-org ALIASORLOGIN
 ```
 - In the Org assign an Einstein User to the Omniscript_Assistant Agent and activate the Agent.  
