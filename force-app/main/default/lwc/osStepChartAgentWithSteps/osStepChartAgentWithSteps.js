@@ -3,9 +3,9 @@ import { subscribe, unsubscribe, APPLICATION_SCOPE, MessageContext } from 'light
 //import invokeFlow from '@salesforce/apex/OSAgentFlowInvoker.invokeFlow';
 import invokeFlow from '@salesforce/apex/OSAgentFlowInvokerWorkaround.invokeFlow';
 
-import { OmniscriptBaseMixin } from "omnistudio/omniscriptBaseMixin";
+import { OmniscriptBaseMixin } from "c/omniscriptBaseMixin";
 
-import omniscriptStepChart from 'omnistudio/omniscriptStepChart';
+import omniscriptStepChart from 'c/omniscriptStepChart';
 import tmpl from './osStepChartAgentWithSteps.html';
 
 const ROLE_USER = 'user';
