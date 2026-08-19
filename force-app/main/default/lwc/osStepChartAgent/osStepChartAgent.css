@@ -1,5 +1,15 @@
 /* Cache-busting comment to force re-compilation */
 
+:host {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 380px;
+    max-height: 100vh;
+    z-index: 1000;
+    overflow-y: auto;
+}
+
 /* Container */
 .an-chat-container {
     max-height: 350px;
